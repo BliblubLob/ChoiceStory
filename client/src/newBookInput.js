@@ -1,27 +1,43 @@
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/esm/Container';
 import Form from 'react-bootstrap/Form';
+import axios from 'axios';
 
 function NewBookInput() {
+
+    function handle_submit(event){
+        event.preventDefault()
+        console.log(event.target.elements)
+        const title = event.target.elements[0].value
+        const summary = event.target.elements[1].value
+        const new_book = {
+            title: title,
+            summary: summary
+        }
+        axios.post('/api',new_book).then(
+            function(res){
+                console.log('new book created: ',res)
+            }
+        )
+
+    }
     return (
         // 
         <Container className="mt-3">
-            <Form className="" >
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form className="" onSubmit={handle_submit} >
+                <Form.Group className="mb-3" >
                     <Form.Label>Book title</Form.Label>
-                    <Form.Control type="email" placeholder="give the book a name" />
+                    <Form.Control  placeholder="give the book a name" />
                     <Form.Text className="text-muted">
-                        Hurry the fuck up 
+                        How difficult is it
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3" >
                     <Form.Label>Summary</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control as="textarea" rows={3} placeholder="This book is about" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
+
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>

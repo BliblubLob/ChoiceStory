@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import NextPage from './next_page';
+import AddChoice from './add_choice';
+
 
 
 
@@ -21,6 +23,15 @@ function Page() {
             <NextPage choice={choice.choice}/>
             </Link>
         )
+    }
+
+    function Render_add_choice(choices){
+        if (choices.length<3){
+            return  <AddChoice/>
+        }
+        else{
+            return null
+        }
     }
 
     useEffect(function () {
@@ -39,7 +50,7 @@ function Page() {
     //start rendering choices only after server has replied
     if ( choices ){
         return (
-            <Container >
+            <Container fluid >
                 <Row className='mt-3'>
                     <h1 className='text-center'>
                         {bookName}
@@ -50,8 +61,8 @@ function Page() {
                 </Row>
                 <Container className='m-3'>
                     {choices.map(Render_choice)}
+                    {Render_add_choice(choices)}
                 </Container>
-    
             </Container>
         )
     }

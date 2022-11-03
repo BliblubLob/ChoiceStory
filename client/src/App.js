@@ -7,7 +7,6 @@ import Page from "./bookshelf/page/page";
 function App() {
   return (
     <div className="App">
-
       <MyNavbar/>
 
       <Routes>

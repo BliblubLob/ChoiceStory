@@ -10,6 +10,7 @@ function Librarian(book) {
     <Book
       key = {book._id}
       name={book.name}
+      entry = {book.entry}
     />
   )
 }

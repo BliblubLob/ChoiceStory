@@ -14,7 +14,7 @@ function Book(props) {
                     <Card.Text>
                         this is a book sdfsfdasf
                     </Card.Text>
-                    <Link to={props.name+'/0'}>
+                    <Link to={props.name+'/'+props.entry}>
                         <Button variant="primary">Start reading</Button>
                     </Link>
                 </Card.Body>
