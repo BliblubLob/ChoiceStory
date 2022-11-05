@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function AddBookBtn() {
 
     return (
-            <div style={{ zIndex: 1, position: "fixed", top: "75%", left: "5%" }}>
+            <div style={{ zIndex: 1, position: "fixed", top: "80%", left: "5%" }}>
                 <div style={{ zIndex: 1, display: "flex", justifyContent: "flex-end" }}>
 
                     <div style={{ position: 'relative', zIndex: 1 }}>

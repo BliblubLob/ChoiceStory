@@ -16,10 +16,10 @@ function NewBookInput() {
             summary: summary,
             first_page: first_page
         }
-        axios.post('/api',new_book).then(
+        axios.post('/api',new_book).then( //make sure that server returns something even for post request
             function(res){
-                console.log('new book created: ',res)
-                window.location.reload(false)
+                console.log(res)
+                window.location.replace('http://localhost:3000/')
             }
         )
 

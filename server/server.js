@@ -6,10 +6,9 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json());
 
-const port = 5000
 
 //1. connect to database
-mongoose.connect('mongodb://localhost:27017/ChoiceNovelDB')
+mongoose.connect('mongodb+srv://YUXUAN:<NotShowingPassword>@cluster0.ray2rlb.mongodb.net/ChoiceStoryDB')
 //2. make a schema
 const bookSchema = new mongoose.Schema({
     content: String,
@@ -73,6 +72,7 @@ app.route('/api').get(
                 })
             }
         })
+        res.send('book added')
 
     }
 )
@@ -131,5 +131,10 @@ app.route('/api/:bookName/:id').get(
 
 
 
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+const port = process.env.PORT;
+if (port == null || port == "") {
+    app.listen(5000, () => console.log(`app listening on port 5000!`))
+}
+else{
+    app.listen(port, () => console.log(`app listening on port ${port}!`))
+}
