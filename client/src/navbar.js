@@ -6,7 +6,7 @@ function MyNavbar() {
   return (
     <Navbar sticky="top" style={{backgroundColor: "LightSlateGray"}} variant="dark" expand="sm">
       <Container>
-        <Navbar.Brand href="/">Choice Novel</Navbar.Brand>
+        <Navbar.Brand href="/">Choice Story</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
