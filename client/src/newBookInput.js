@@ -10,13 +10,16 @@ function NewBookInput() {
         console.log(event.target.elements)
         const title = event.target.elements[0].value
         const summary = event.target.elements[1].value
+        const first_page = event.target.elements[2].value
         const new_book = {
             title: title,
-            summary: summary
+            summary: summary,
+            first_page: first_page
         }
         axios.post('/api',new_book).then(
             function(res){
                 console.log('new book created: ',res)
+                window.location.reload(false)
             }
         )
 
@@ -36,6 +39,12 @@ function NewBookInput() {
                 <Form.Group className="mb-3" >
                     <Form.Label>Summary</Form.Label>
                     <Form.Control as="textarea" rows={3} placeholder="This book is about" />
+                </Form.Group>
+
+
+                <Form.Group className="mb-3" >
+                    <Form.Label>First Page</Form.Label>
+                    <Form.Control as="textarea" rows={3} placeholder="You woke up in a foreign room ..." />
                 </Form.Group>
 
                 <Button variant="primary" type="submit">

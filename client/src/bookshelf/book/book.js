@@ -8,11 +8,12 @@ function Book(props) {
         <Col sm={4} style={{ display: "block" }} className={'d-sm-inline-block p-2'}>
 
             <Card  >
-                <Card.Img variant="top" src="holder.js/100px180" />
+                {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+                {/* add ability  to draw in future */}
                 <Card.Body>
                     <Card.Title> {props.name} </Card.Title>
                     <Card.Text>
-                        this is a book sdfsfdasf
+                        {props.summary}
                     </Card.Text>
                     <Link to={props.name+'/'+props.entry}>
                         <Button variant="primary">Start reading</Button>

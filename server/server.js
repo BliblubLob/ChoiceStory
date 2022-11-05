@@ -18,7 +18,8 @@ const bookSchema = new mongoose.Schema({
 
 const book_title_schema = mongoose.Schema({
     name: String,
-    summary: String
+    summary: String,
+    entry: String
 })
 //3. make a model using the schema
 const Book_title = mongoose.model('book_title', book_title_schema)
@@ -44,17 +45,35 @@ app.route('/api').get(
     function(req,res){
         const title = req.body.title
         const summary = req.body.summary
-        const new_book = {
-            title: title,
-            summary: summary
+        const first_page = req.body.first_page
+        console.log({summary})
+        //create first page of the book
+        const new_page = {
+            content: first_page
         }
-        console.log(title,summary)
-        //have not created new link page, will update react side to include new page content
-        Book_title.create(new_book,function(err){
+        Book.create(new_page,function(err,new_page){
             if(err){
-                console.log("create book error: ", err)
+                console.log("create new book first page error: ",err)
+            }
+            else{
+                console.log("first page id:",new_page._id)
+                const entry_id = new_page._id
+                const new_book = {
+                    name: title,
+                    summary: summary,
+                    entry: entry_id
+                }
+                Book_title.create(new_book,function(err,new_book){
+                    if(err){
+                        console.log("create book error: ", err)
+                    }
+                    else{
+                        console.log(new_book)
+                    }
+                })
             }
         })
+
     }
 )
 

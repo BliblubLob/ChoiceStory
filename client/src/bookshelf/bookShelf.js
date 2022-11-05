@@ -10,6 +10,7 @@ function Librarian(book) {
     <Book
       key = {book._id}
       name={book.name}
+      summary={book.summary}
       entry = {book.entry}
     />
   )
@@ -23,7 +24,6 @@ function BookShelf() {
   useEffect(() => {
     axios.get('/api').then(
       function (res) {
-        console.log(res.data)
         set_book_info(res.data)
       }
     )
@@ -31,7 +31,7 @@ function BookShelf() {
   },[])
 
   return (
-    <Container fluid>
+    <Container fluid >
 
       {book_info.map(Librarian)}
 
